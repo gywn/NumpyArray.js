@@ -8,7 +8,7 @@ Numpy arrays data ([.npy](https://docs.scipy.org/doc/numpy-dev/neps/npy-format.h
 
 ## Demo
 
-https://gywn.github.io/NumpyArray.js
+https://gywn.github.io/NumpyArray.js/
 
 ## Usage
 
