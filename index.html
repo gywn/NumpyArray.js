@@ -1,0 +1,45 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>World Population Density</title>
+    <style>
+      h1 {
+          font-family: monospace;
+      }
+      th, td {
+          font-family: monospace;
+          text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id='desc'></h1>
+    <table>
+      <thead id='data-head'></thead>
+      <tbody id='data-body'></tbody>
+    </table>
+    <script src="NumpyArray-min.js"></script>
+    <script>
+      const dataURL = 'npy/World Population Density.npy';
+      const dataBody = document.getElementById('data-body');
+      const dataHead = document.getElementById('data-head');
+
+      document.getElementById('desc').innerText = dataURL;
+
+      NumpyArray.getFromURL(dataURL)
+      .then(na => {
+          window['na'] = na;  // You can inspect in Inspector
+
+          dataHead.insertAdjacentHTML('beforeend', '<tr>' +
+              na.fieldNames.map((f, i) => `<th>${f}</th>`).join('') +
+          '</tr>');
+
+          na.toArray().forEach((cells, i) =>
+              dataBody.insertAdjacentHTML('beforeend', '<tr>' +
+                  cells.map((c, i) => `<td>${c}</td>`).join('') +
+              '</tr>')
+          );
+      });
+    </script>
+  </body>
+</html>
